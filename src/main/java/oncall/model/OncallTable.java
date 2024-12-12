@@ -61,8 +61,4 @@ public class OncallTable {
         return days[dayIndex] < NUMBER_CONSTANT.FIVE.getInt();
     }
 
-    private boolean isHollyDay(int dayIndex) {
-        return days[dayIndex] >= NUMBER_CONSTANT.SEVEN.getInt();
-    }
-
 }

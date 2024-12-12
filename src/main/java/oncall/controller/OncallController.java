@@ -10,7 +10,6 @@ import oncall.view.UserInputView;
 
 public class OncallController {
     public void start() {
-
         int[] month_StartDayIndex = UserInputView.readMonth_StartDay();
         Month m = new Month(month_StartDayIndex[NUMBER_CONSTANT.ZERO.getInt()], month_StartDayIndex[NUMBER_CONSTANT.ONE.getInt()]);
         List<Deque<String>> crewList = UserInputView.readCrewList();
