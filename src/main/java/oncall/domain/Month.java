@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 import oncall.util.FILE_CONSTANT;
+import oncall.util.NUMBER_CONSTANT;
 import oncall.view.FileInputView;
 
 public class Month {
@@ -21,7 +22,10 @@ public class Month {
         this.days = new int[count_day];
         updateDays();
         checkHollyDays();
-        printDays();
+    }
+
+    public int getMonthInt() {
+        return monthInt;
     }
 
     private void printDays() {
@@ -49,8 +53,8 @@ public class Month {
     }
 
     private void updateDays() {
-        for (int i = 0; i < count_day; i++, startDayIndex++) {
-            days[i] = (startDayIndex % 7);
+        for (int i = NUMBER_CONSTANT.ZERO.getInt(); i < count_day; i++, startDayIndex++) {
+            days[i] = (startDayIndex % NUMBER_CONSTANT.SEVEN.getInt());
         }
     }
 
@@ -59,9 +63,9 @@ public class Month {
         Scanner scanner = new Scanner(hollydaysString);
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
-            int month = Integer.parseInt(line.split(FILE_CONSTANT.MONTH_DELIMITER.toString())[0]);
+            int month = Integer.parseInt(line.split(FILE_CONSTANT.MONTH_DELIMITER.toString())[NUMBER_CONSTANT.ZERO.getInt()]);
             if (monthInt == month) {
-                updateHollyDays(line.split(FILE_CONSTANT.MONTH_DELIMITER.toString())[1]);
+                updateHollyDays(line.split(FILE_CONSTANT.MONTH_DELIMITER.toString())[NUMBER_CONSTANT.ONE.getInt()]);
             }
         }
     }
@@ -70,19 +74,14 @@ public class Month {
         List<String> hollyDayList = Arrays.stream(hollyDays.split(FILE_CONSTANT.DAY_DELIMITER.toString())).toList();
         for (String day : hollyDayList) {
             int dayInt = Integer.parseInt(day);
-            if (this.days[dayInt-1] < 5) {    // 그날이 평일이면
-                this.days[dayInt-1] = 7;  // 법정 공휴일 7로 지정
+            if (this.days[dayInt - 1] < 5) {    // 그날이 평일이면
+                this.days[dayInt - 1] += 7;  // 법정 공휴일 7로 지정
             }
         }
     }
 
-
-    private boolean isWeekDay(int dayIndex) {
-        return days[dayIndex-1] < 5;
-    }
-
-    private boolean isHollyDay(int dayIndex) {
-        return days[dayIndex-1] == 7;
+    public int[] getDays() {
+        return this.days;
     }
 
 }
