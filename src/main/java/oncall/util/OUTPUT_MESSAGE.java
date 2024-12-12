@@ -3,11 +3,16 @@ package oncall.util;
 public enum OUTPUT_MESSAGE {
     // 일반 정적 출력 문구 예시
     ASK_MONTH_START_DAY("비상 근무를 배정할 월과 시작 요일을 입력하세요> "),
-    openingComment("안녕하세요. W편의점입니다.\n현재 보유하고 있는 상품입니다.\n"),
-    divider("===================================="),
-    doubleTab("\t\t"),
-    // format 사용한 가변 출력 문구 예시
-    PAY_AMOUNT("내실돈\t\t\t %s");
+    ASK_WEEKDAY_CREW_LIST("평일 비상 근무 순번대로 사원 닉네임을 입력하세요>"),
+    ASK_HOLLY_DAY_CREW_LIST("휴일 비상 근무 순번대로 사원 닉네임을 입력하세요>"),
+    MONTH_CONSTANT("월 "),
+    DAY_CONSTANT("일 "),
+    SPACE(" "),
+    EMPTY(""),
+    HOLLY_DAY_SUFFIX("(휴일)"),
+
+
+    ;
     private final String message;
 
     OUTPUT_MESSAGE(String message) {

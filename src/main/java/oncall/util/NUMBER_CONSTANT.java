@@ -11,8 +11,16 @@ public enum NUMBER_CONSTANT {
     SEVEN(7L),
     EIGHT(8L),
     NINE(9L),
-    TEN(10L);
+    TEN(10L),
+    ELEVEN(11L),
+    TWELVE(12L),
 
+    T8(28L),
+    T0(30L),
+    T1(31L),
+
+
+    ;
     private final Long value;
 
     NUMBER_CONSTANT(Long value) {
