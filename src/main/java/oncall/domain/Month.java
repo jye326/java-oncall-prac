@@ -75,4 +75,14 @@ public class Month {
             }
         }
     }
+
+
+    private boolean isWeekDay(int dayIndex) {
+        return days[dayIndex-1] < 5;
+    }
+
+    private boolean isHollyDay(int dayIndex) {
+        return days[dayIndex-1] == 7;
+    }
+
 }
