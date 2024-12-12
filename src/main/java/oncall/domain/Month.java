@@ -28,27 +28,21 @@ public class Month {
         return monthInt;
     }
 
-    private void printDays() {
-        for (int i = 0; i < count_day; i++) {
-            System.out.print(days[i]);
-        }
-    }
 
     private int getCount_day(int monthInt) {
-        //각 월이 몇일 까지 있냐
         HashMap<Integer, Integer> map = new HashMap<>();
-        map.put(1, 31);
-        map.put(2, 28);
-        map.put(3, 31);
-        map.put(4, 30);
-        map.put(5, 31);
-        map.put(6, 30);
-        map.put(7, 31);
-        map.put(8, 31);
-        map.put(9, 30);
-        map.put(10, 31);
-        map.put(11, 30);
-        map.put(12, 31);
+        map.put(NUMBER_CONSTANT.ONE.getInt(), NUMBER_CONSTANT.T1.getInt());
+        map.put(NUMBER_CONSTANT.TWO.getInt(), NUMBER_CONSTANT.T8.getInt());
+        map.put(NUMBER_CONSTANT.THREE.getInt(), NUMBER_CONSTANT.T1.getInt());
+        map.put(NUMBER_CONSTANT.FOUR.getInt(), NUMBER_CONSTANT.T0.getInt());
+        map.put(NUMBER_CONSTANT.FIVE.getInt(), NUMBER_CONSTANT.T1.getInt());
+        map.put(NUMBER_CONSTANT.SIX.getInt(), NUMBER_CONSTANT.T0.getInt());
+        map.put(NUMBER_CONSTANT.SEVEN.getInt(), NUMBER_CONSTANT.T1.getInt());
+        map.put(NUMBER_CONSTANT.EIGHT.getInt(), NUMBER_CONSTANT.T1.getInt());
+        map.put(NUMBER_CONSTANT.NINE.getInt(), NUMBER_CONSTANT.T0.getInt());
+        map.put(NUMBER_CONSTANT.TEN.getInt(), NUMBER_CONSTANT.T1.getInt());
+        map.put(NUMBER_CONSTANT.ELEVEN.getInt(), NUMBER_CONSTANT.T0.getInt());
+        map.put(NUMBER_CONSTANT.TWELVE.getInt(), NUMBER_CONSTANT.T1.getInt());
         return map.get(monthInt);
     }
 
@@ -74,8 +68,8 @@ public class Month {
         List<String> hollyDayList = Arrays.stream(hollyDays.split(FILE_CONSTANT.DAY_DELIMITER.toString())).toList();
         for (String day : hollyDayList) {
             int dayInt = Integer.parseInt(day);
-            if (this.days[dayInt - 1] < 5) {    // 그날이 평일이면
-                this.days[dayInt - 1] += 7;  // 법정 공휴일 7로 지정
+            if (this.days[dayInt - NUMBER_CONSTANT.ONE.getInt()] < NUMBER_CONSTANT.FIVE.getInt()) {    // 그날이 평일이면
+                this.days[dayInt - NUMBER_CONSTANT.ONE.getInt()] += NUMBER_CONSTANT.SEVEN.getInt();  // 공휴일은 7 더함
             }
         }
     }
